@@ -11,6 +11,7 @@
 
 int main() {
   int sockfd;
+  int count = 0;
   unsigned char buffer[65536];
 
   printf("Starting Packet Analyser...\n");
@@ -22,8 +23,8 @@ int main() {
     return 1;
   }
   printf("Waiting for packets...\n");
-
-  while (1) {
+  // to capture 10 packets
+  while (count < 10) {
     size_t packet_size;
     packet_size = recvfrom(sockfd, buffer, sizeof(buffer), 0, NULL, NULL);
 
@@ -31,7 +32,8 @@ int main() {
       perror("recvfrom");
       continue;
     }
-    analyse_packet(buffer);
+    analyze_packet(buffer);
+    count++;
   }
   close(sockfd);
   return 0;

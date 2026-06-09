@@ -1,8 +1,6 @@
 #include <arpa/inet.h>
-#include <netinet/in.h>
 #include <netinet/ip.h>
 #include <stdio.h>
-#include <sys/_endian.h>
 
 #include "packet.h"
 
