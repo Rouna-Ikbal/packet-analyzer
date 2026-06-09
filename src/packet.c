@@ -12,11 +12,11 @@ void analyze_packet(unsigned char *buffer) {
 
   src.sin_addr.s_addr = ip_header->saddr;
   dst.sin_addr.s_addr = ip_header->daddr;
-  printf("===================");
+  printf("===================\n");
   printf("Packet Received\n");
-  printf("===================");
+  printf("===================\n");
   printf("Source IP: %s\n", inet_ntoa(src.sin_addr));
-  printf("Destination IP: %s", inet_ntoa(dst.sin_addr));
+  printf("Destination IP: %s\n", inet_ntoa(dst.sin_addr));
   printf("Protocol: ");
   switch (ip_header->protocol) {
   case 1:
@@ -29,8 +29,8 @@ void analyze_packet(unsigned char *buffer) {
     printf("UDP\n");
     break;
   default:
-    printf("OTHER (%d)", ip_header->protocol);
+    printf("OTHER (%d)\n", ip_header->protocol);
   }
   printf("TTL: %d\n", ip_header->ttl);
-  printf("Packet Length: %d bytes", ntohs(ip_header->tot_len));
+  printf("Packet Length: %d bytes\n", ntohs(ip_header->tot_len));
 }
